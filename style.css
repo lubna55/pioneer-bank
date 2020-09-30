@@ -1,0 +1,18 @@
+
+body{
+   
+   
+    background-color: slategray;
+}
+
+
+.heading{
+    background-color: rgb(53, 105, 103);
+    color: cornsilk;
+}
+#col{
+    margin-top: -0.9%;
+    padding: 2%;
+    background-color: purple;
+    color: rosybrown;
+}
