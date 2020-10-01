@@ -25,20 +25,20 @@
       <div class="col-md-4"> 
         <div id="box1" class="box">
           <h4>deposit</h4>
-          <h2>$$</h2>
+          <h2 >$ <span id="currentDeposit">00</span></h2>
         </div>
   
       </div>
       <div class="col-md-4 ">
         <div id="box2" class="box">
           <h4>Withdraw</h4>
-          <h2>$$</h2>
+          <h2 id="withdrawH2">$ <span id="currentWithdraw">00</span></h2>
         </div>
       </div>
       <div class="col-md-4">
         <div id="box3" class="box">
           <h4>Balance</h4>
-          <h2>$$</h2>
+          <h2> $ <span id="currentBalance">1240</span></h2>
         </div>
       </div>
     </div>
@@ -47,18 +47,18 @@
     <div class="row" id="secondPortion">
       <div class="col-md-6">
         <div class="box" id="box4" >
-          <h4>Deposit</h4>
-          <input type="text" class="form-control" placeholder="$ amount you want to deposit">
+          <h4 >Deposit</h4>
+          <input id="depositInput" type="text" class="form-control" placeholder="$ amount you want to deposit">
           <br>
-          <button class="btn btn-primary"> Enter</button>
+          <button id="button2" class="btn btn-primary"> Enter</button>
         </div>
       </div>
       <div class="col-md-6">
         <div class="box" id="box5">
           <h4>Withdraw</h4>
-          <input type="text" class="form-control" placeholder="$ Amount you want to withdraw">
+          <input id="withdrawInput" type="text" class="form-control" placeholder="$ Amount you want to withdraw">
           <br>
-          <button class="btn btn-primary"> Enter</button>
+          <button id="button3" class="btn btn-primary"> Enter</button>
         </div>
       </div>
     </div>
@@ -78,9 +78,24 @@
         
         const secondPage = document.getElementById("second-page");
         secondPage.style.display = "block";
-
+      })
+      document.getElementById("button2").addEventListener("click", function(){
+        let depositInput = document.getElementById("depositInput").value;
+        let depositInputNumber = parseFloat(depositInput);
+        let currentDeposit = document.getElementById("currentDeposit").innerText;
+        let currentDepositNumber = parseFloat(currentDeposit);
+        let totalDeposit = currentDepositNumber + depositInputNumber;
+        document.getElementById("currentDeposit").innerText = totalDeposit;
+        document.getElementById("depositInput").value ="";
+        
+        const currentBalance = document.getElementById("currentBalance").innerText;
+        const currentBalanceNumber = parseFloat (currentBalance);
+        const totalBalance = depositInputNumber + currentBalanceNumber;
+        document.getElementById("currentBalance").innerText = totalBalance;
 
       })
+      
+
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
