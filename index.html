@@ -87,15 +87,24 @@
         let totalDeposit = currentDepositNumber + depositInputNumber;
         document.getElementById("currentDeposit").innerText = totalDeposit;
         document.getElementById("depositInput").value ="";
-        
+
         const currentBalance = document.getElementById("currentBalance").innerText;
         const currentBalanceNumber = parseFloat (currentBalance);
-        const totalBalance = depositInputNumber + currentBalanceNumber;
+        var totalBalance = depositInputNumber + currentBalanceNumber;
         document.getElementById("currentBalance").innerText = totalBalance;
+        })
+        document.getElementById("button3").addEventListener("click", function(){
+          var withdrawInput = document.getElementById("withdrawInput").value;
+          var withdrawInputNumber = parseFloat (withdrawInput);
+          var currentWithdraw = document.getElementById ("currentWithdraw").innerText;
+          var currentWithdrawNumber = parseFloat(currentWithdraw);
+          var totalWithdraw = currentWithdrawNumber + withdrawInputNumber;
+          document.getElementById("currentWithdraw").innerText = totalWithdraw;
+          document.getElementById("withdrawInput").value = "";
 
-      })
-      
-
+          document.getElementById("currentBalance").innerText = totalBalance - totalWithdraw;
+        })
+    
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
