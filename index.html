@@ -25,14 +25,14 @@
       <div class="col-md-4"> 
         <div id="box1" class="box">
           <h4>deposit</h4>
-          <h2 >$ <span id="currentDeposit">00</span></h2>
+          <h2 >$ <span id="currentDeposit"> 0 </span></h2>
         </div>
   
       </div>
       <div class="col-md-4 ">
         <div id="box2" class="box">
           <h4>Withdraw</h4>
-          <h2 id="withdrawH2">$ <span id="currentWithdraw">00</span></h2>
+          <h2>$ <span id="currentWithdraw">00</span></h2>
         </div>
       </div>
       <div class="col-md-4">
@@ -79,31 +79,44 @@
         const secondPage = document.getElementById("second-page");
         secondPage.style.display = "block";
       })
+
       document.getElementById("button2").addEventListener("click", function(){
         let depositInput = document.getElementById("depositInput").value;
         let depositInputNumber = parseFloat(depositInput);
-        let currentDeposit = document.getElementById("currentDeposit").innerText;
-        let currentDepositNumber = parseFloat(currentDeposit);
-        let totalDeposit = currentDepositNumber + depositInputNumber;
-        document.getElementById("currentDeposit").innerText = totalDeposit;
+
+        
+       updateSpan ("currentDeposit" , depositInputNumber);
+       updateSpan ("currentBalance", depositInputNumber);
+
         document.getElementById("depositInput").value ="";
+         })
 
-        const currentBalance = document.getElementById("currentBalance").innerText;
-        const currentBalanceNumber = parseFloat (currentBalance);
-        var totalBalance = depositInputNumber + currentBalanceNumber;
-        document.getElementById("currentBalance").innerText = totalBalance;
-        })
+        function updateSpan (id , a){
+        let current = document.getElementById(id).innerText;
+        const currentBalanceNumber = parseFloat (current);
+        var totalBalance = a + currentBalanceNumber;
+        document.getElementById(id).innerText = totalBalance;
+        }
+
+
+        
         document.getElementById("button3").addEventListener("click", function(){
-          var withdrawInput = document.getElementById("withdrawInput").value;
-          var withdrawInputNumber = parseFloat (withdrawInput);
-          var currentWithdraw = document.getElementById ("currentWithdraw").innerText;
-          var currentWithdrawNumber = parseFloat(currentWithdraw);
-          var totalWithdraw = currentWithdrawNumber + withdrawInputNumber;
-          document.getElementById("currentWithdraw").innerText = totalWithdraw;
-          document.getElementById("withdrawInput").value = "";
+        let withdrawInput = document.getElementById("withdrawInput").value;
+        let withdrawInputNumber = parseFloat(withdrawInput);
 
-          document.getElementById("currentBalance").innerText = totalBalance - totalWithdraw;
+        updateSpan ("currentWithdraw" , withdrawInputNumber);
+
+        let current = document.getElementById("currentBalance").innerText;
+        let currentBalanceNumber = parseFloat (current);
+        let totalBalance = -withdrawInputNumber + currentBalanceNumber;
+        document.getElementById("currentBalance").innerText = totalBalance;
+
+        document.getElementById("withdrawInput").value ="";
         })
+        
+      
+
+
     
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
